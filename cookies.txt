@@ -1,0 +1,9 @@
+def download_youtube_video(url, output_path):
+    ydl_opts = {
+        'format': 'best[ext=mp4]',
+        'outtmpl': f'{output_path}/downloaded_video.%(ext)s',
+        'quiet': True,
+        'cookiefile': 'cookies.txt',  # this line must exist
+    }
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([url])
